@@ -6,7 +6,13 @@ for (my $Year = 1978; $Year <= 2015; $Year++) {
 
 	open(FILE, ">$Year.html");
 
-	print FILE "<html>\n\n";
+	print FILE "<!DOCTYPE html PUBLIC \"-\/\/W3C\/\/DTD HTML 4.01\/\/EN\" \"http:\/\/www.w3.org\/TR\/html4\/strict.dtd\">\n";
+	print FILE "<html lang=\"en\">\n";
+	print FILE "<head>\n";
+	print FILE "<meta http-equiv=\"content-type\" content=\"text\/html; charset=utf-8\">\n";
+	print FILE "<title>All Garfields<\/title>\n";
+	print FILE "<\/head>\n";
+	print FILE "<body>\n\n\n";
 
 	for (my $month = 1; $month <= 12; $month++) {
 
@@ -30,7 +36,8 @@ for (my $Year = 1978; $Year <= 2015; $Year++) {
 		}
 
 	}
-	print FILE "\n</html>";
+	print FILE "\n</body>\n";
+	print FILE "</html>\n";
 	close(FILE);
 
 }
