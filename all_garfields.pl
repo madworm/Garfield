@@ -2,28 +2,35 @@
 
 my $maxday = 31;
 
-for(my $Year=1978; $Year<=2015; $Year++){
+for (my $Year = 1978; $Year <= 2015; $Year++) {
 
-open(FILE,">$Year.html");
+	open(FILE, ">$Year.html");
 
-for(my $month=1; $month<=12;$month++){
+	print FILE "<html>\n\n";
 
-for(my $day=1;$day<=$maxday;$day++){
-$month = 1 * $month;
-$day = 1 * $day;
+	for (my $month = 1; $month <= 12; $month++) {
 
-if ($month<10){$month = join('',(0,$month));}
-if ($day<10){$day = join('',(0,$day));}
-$year = substr($Year,2,2);
+		for (my $day = 1; $day <= $maxday; $day++) {
+			$month = 1 * $month;
+			$day = 1 * $day;
 
-print FILE "<center><br>";
-print FILE "<img
-src=\"http://images.ucomics.com/comics/ga/$Year/ga$year$month$day.gif\"><br><br>\n";
-print FILE "<b>$day - $month - $Year</b><br><br><br>\n";
-print FILE "</center>";
-}
+			if ($month < 10) {
+				$month = join('', (0, $month));
+			}
+			if ($day < 10) {
+				$day = join('', (0, $day));
+			}
+			$year = substr($Year, 2, 2);
 
-}
-close(FILE);
+			print FILE "<center>\n";
+			print FILE "<img src=\"http://images.ucomics.com/comics/ga/$Year/ga$year$month$day.gif\"><br><br>\n";
+			print FILE "<b>$day - $month - $Year</b>\n";
+			print FILE "<br><br><br>\n";
+			print FILE "</center>\n\n";
+		}
+
+	}
+	print FILE "\n</html>";
+	close(FILE);
 
 }
